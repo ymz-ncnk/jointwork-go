@@ -1,6 +1,6 @@
 package jointwork
 
-// Task represents a task of the JointWork.
+// Task represents a task of JointWork.
 //
 // The Stop method can be called several times.
 type Task interface {

@@ -16,9 +16,9 @@ func New(tasks []Task) JointWork {
 
 // JointWork performs several Tasks in different goroutines simultaneously.
 //
-// If a Task completes with an error, the JointWork stops the remaining Tasks
-// (it will panic if it cannot stop all of them). If a Task completes without
-// an error, the JointWork continues execution. Also the JointWork is a Task
+// If one Task completes with an error, JointWork stops remaining Tasks
+// (it will panic if it cannot stop all of them). If Task completes without
+// an error, JointWork continues execution. Also JointWork is a Task
 // itself.
 type JointWork struct {
 	tasks        []Task
@@ -28,12 +28,12 @@ type JointWork struct {
 	mu           *sync.Mutex
 }
 
-// Run runs the JointWork.
+// Run runs JointWork.
 //
 // Returns a multierr.multiError which contains all Task errors or nil if all
 // Tasks were completed without errors.
 //
-// Run will panic if one of the Tasks fails and it can't stop them all.
+// Run will panic if one of Tasks fails and it can't stop them all.
 func (jw *JointWork) Run() (err error) {
 	errs := make(chan error, len(jw.tasks))
 	if len(jw.tasks) == 0 {
@@ -48,7 +48,7 @@ func (jw *JointWork) Run() (err error) {
 	return multierr.New(toSlice(errs))
 }
 
-// Stop stops the JointWork, it stops all the Tasks.
+// Stop stops JointWork, it stops all Tasks.
 //
 // Returns a multierr.multiError or nil if all Tasks were stopped without
 // errors.

@@ -20,7 +20,7 @@ func (err *TaskError) TaskIndex() int {
 	return err.taskIndex
 }
 
-// Cause returns the error that caused the Task to stop.
+// Cause returns the error that caused Task to stop.
 func (err *TaskError) Cause() error {
 	return err.cause
 }
