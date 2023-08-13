@@ -1,5 +1,5 @@
 # jointwork-go
-jointwork-go combines several tasks into one.
+jointwork-go combines several parallel tasks into one.
 
 # Tests
 Test coverage is 100%.
